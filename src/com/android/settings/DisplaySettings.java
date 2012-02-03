@@ -52,6 +52,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
     private static final String KEY_SCREEN_SAVER = "screensaver";
 
+    private CheckBoxPreference mBrightnessAutoDim;
     private CheckBoxPreference mAccelerometer;
     private ListPreference mFontSizePref;
     private CheckBoxPreference mNotificationPulse;
@@ -75,6 +76,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         ContentResolver resolver = getActivity().getContentResolver();
 
         addPreferencesFromResource(R.xml.display_settings);
+
+        mBrightnessAutoDim = (CheckBoxPreference) findPreference("brightness_auto_dim");
+        mBrightnessAutoDim.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.SCREEN_AUTO_BRIGHTNESS_DIM, 0) == 1);
+        mBrightnessAutoDim.setOnPreferenceChangeListener(this);
 
         mAccelerometer = (CheckBoxPreference) findPreference(KEY_ACCELEROMETER);
         mAccelerometer.setPersistent(false);
@@ -261,6 +267,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         } else if (preference == mNotificationPulse) {
             boolean value = mNotificationPulse.isChecked();
             Settings.System.putInt(getContentResolver(), Settings.System.NOTIFICATION_LIGHT_PULSE,
+                    value ? 1 : 0);
+            return true;
+        } else if (preference == mBrightnessAutoDim) {
+            boolean value = mBrightnessAutoDim.isChecked();
+            Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_AUTO_BRIGHTNESS_DIM,
                     value ? 1 : 0);
             return true;
         }
