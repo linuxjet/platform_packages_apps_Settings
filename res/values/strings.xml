@@ -1768,14 +1768,14 @@
     <string name="firmware_version">Android version</string>
     <!-- About phone screen, status item label-->
     <string name="model_number">Model number</string>
-    <!-- About phone screen, fcc equipment id label-->
-    <string name="fcc_equipment_id">Equipment ID</string>
     <!-- About phone screen,  setting option name-->
     <string name="baseband_version">Baseband version</string>
     <!-- About phone screen,  setting option name-->
     <string name="kernel_version">Kernel version</string>
     <!-- About phone screen,  setting option name-->
     <string name="build_number">Build number</string>
+    <!-- About phone screen,  setting option name-->
+    <string name="build_date">Build date</string>
 
     <!-- About phone screen, show when a value of some status item is unavailable. -->
     <string name="device_info_not_available">Not available</string>
@@ -4106,4 +4106,30 @@
     <string name="cell_broadcast_settings">Cell broadcasts</string>
     <!-- Cell Broadcast settings description [CHAR LIMIT=100] -->
     <string name="cell_broadcast_settings_summary">Select the types of emergency alerts to display.</string>
+    <!-- Status bar toggles settings -->
+    <string name="toggles_layout">Status bar toggles</string>
+    <string name="alternate_button_layout_title">Toggle style</string>
+    <string name="alternate_button_layout_summary">Use buttons instead of switches</string>
+    <string name="enabled_toggles_title">Enabled toggles</string>
+    <string name="enabled_toggles_summary">Choose which toggles to display</string>
+    <string name="toggles_order_title">Toggle order</string>
+    <string name="toggles_order_summary">Choose which order to display toggles</string>
+    <string name="brightness_location_title">Brightness location</string>
+    <string name="always_visible_toggles">Auto-hide toggles</string>
+    <string name="default_title">Reset toggle defaults</string>
+
+    <!-- Performance Settings -->
+    <string name="performance_settings_title">Performance</string>
+    <string name="processor_title">Processor</string>
+    <string name="processor_summary">Change CPU governor and clock speed</string>
+    <string name="cpu_cur_freq_title">Current CPU frequency</string>
+    <string name="cpu_governors_title">CPU governor</string>
+    <string name="cpu_governors_summary">%S</string>
+    <string name="cpu_min_freq_title">Minimum CPU frequency</string>
+    <string name="cpu_min_freq_summary">%s</string>
+    <string name="cpu_max_freq_title">Maximum CPU frequency</string>
+    <string name="cpu_max_freq_summary">%s</string>
+    <string name="cpu_set_on_boot">Set on boot</string>
+    <string name="cpu_set_on_boot_summary">Restore the processor settings on boot</string>
+
 </resources>

@@ -55,12 +55,11 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
     private static final String PROPERTY_URL_SAFETYLEGAL = "ro.url.safetylegal";
     private static final String KEY_KERNEL_VERSION = "kernel_version";
     private static final String KEY_BUILD_NUMBER = "build_number";
+    private static final String KEY_BUILD_DATE = "build_date";
     private static final String KEY_DEVICE_MODEL = "device_model";
     private static final String KEY_BASEBAND_VERSION = "baseband_version";
     private static final String KEY_FIRMWARE_VERSION = "firmware_version";
     private static final String KEY_UPDATE_SETTING = "additional_system_update_settings";
-    private static final String KEY_EQUIPMENT_ID = "fcc_equipment_id";
-    private static final String PROPERTY_EQUIPMENT_ID = "ro.ril.fccid";
 
     long[] mHits = new long[3];
 
@@ -74,18 +73,13 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
         findPreference(KEY_FIRMWARE_VERSION).setEnabled(true);
         setValueSummary(KEY_BASEBAND_VERSION, "gsm.version.baseband");
         setStringSummary(KEY_DEVICE_MODEL, Build.MODEL + getMsvSuffix());
-        setValueSummary(KEY_EQUIPMENT_ID, PROPERTY_EQUIPMENT_ID);
-        setStringSummary(KEY_DEVICE_MODEL, Build.MODEL);
         setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY);
+        setValueSummary(KEY_BUILD_DATE, "ro.build.date");
         findPreference(KEY_KERNEL_VERSION).setSummary(getFormattedKernelVersion());
 
         // Remove Safety information preference if PROPERTY_URL_SAFETYLEGAL is not set
         removePreferenceIfPropertyMissing(getPreferenceScreen(), "safetylegal",
                 PROPERTY_URL_SAFETYLEGAL);
-
-        // Remove Equipment id preference if FCC ID is not set by RIL
-        removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_EQUIPMENT_ID,
-                PROPERTY_EQUIPMENT_ID);
 
         // Remove Baseband version if wifi-only device
         if (Utils.isWifiOnly(getActivity())) {

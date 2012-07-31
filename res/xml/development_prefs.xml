@@ -27,6 +27,15 @@
                 android:targetClass="com.android.settings.SetFullBackupPassword" />
     </PreferenceScreen>
 
+    <PreferenceCategory android:title="@string/performance_settings_title" >
+    </PreferenceCategory>
+
+    <PreferenceScreen  
+        android:key="processor"
+        android:fragment="com.android.settings.bb.fragments.Processor"
+        android:title="@string/processor_title"
+        android:summary="@string/processor_summary" />
+
     <CheckBoxPreference 
         android:key="keep_screen_on" 
         android:title="@string/keep_screen_on" 

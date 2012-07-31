@@ -104,6 +104,8 @@ public class DevelopmentSettings extends PreferenceFragment
 
     private static final String SHOW_ALL_ANRS_KEY = "show_all_anrs";
 
+    private static final String PROCESSOR = "processor";
+
     private static final String TAG_CONFIRM_ENFORCE = "confirm_enforce";
 
     private static final int RESULT_DEBUG_APP = 1000;
@@ -122,6 +124,7 @@ public class DevelopmentSettings extends PreferenceFragment
     private CheckBoxPreference mEnforceReadExternal;
     private CheckBoxPreference mAllowMockLocation;
     private PreferenceScreen mPassword;
+    private PreferenceScreen mProcessor;
 
     private String mDebugApp;
     private Preference mDebugAppPref;
@@ -218,6 +221,9 @@ public class DevelopmentSettings extends PreferenceFragment
 
         mShowAllANRs = (CheckBoxPreference) findPreference(
                 SHOW_ALL_ANRS_KEY);
+
+        mProcessor = (PreferenceScreen) findPreference(PROCESSOR);
+
         mAllPrefs.add(mShowAllANRs);
         mResetCbPrefs.add(mShowAllANRs);
 
@@ -852,6 +858,9 @@ public class DevelopmentSettings extends PreferenceFragment
             writeShowHwScreenUpdatesOptions();
         } else if (preference == mDebugLayout) {
             writeDebugLayoutOptions();
+        } else {
+            // If we didn't handle it, let preferences handle it
+            return super.onPreferenceTreeClick(preferenceScreen, preference);
         }
 
         return false;
